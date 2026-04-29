@@ -8,7 +8,8 @@ const firebaseConfig = {
     storageBucket: "gen-lang-client-0915071340.firebasestorage.app",
     messagingSenderId: "290897469764",
     appId: "1:290897469764:web:e6d3bf9b912e6526f73711",
-    measurementId: "G-Y5V0R6NEW6"
+    measurementId: "G-Y5V0R6NEW6",
+    databaseURL: "https://gen-lang-client-0915071340-default-rtdb.firebaseio.com"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -37,11 +38,9 @@ class StorageManager {
             this.firstCloudLoad = true;
             const data = snapshot.val();
             if (!data) {
-                // Keep default state locally and save to db
                 this.saveData(defaultState);
                 callback(defaultState, true);
             } else {
-                // Ensure arrays exist if empty
                 const sanitized = {
                     inventory: data.inventory || [],
                     customers: data.customers || [],
@@ -49,9 +48,17 @@ class StorageManager {
                     expenses: data.expenses || [],
                     loans: data.loans || []
                 };
-                // Backup to local
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(sanitized));
                 callback(sanitized, true);
+            }
+        }, (error) => {
+            console.error("Firebase Read Error:", error);
+            // If cloud fails (e.g. permission denied), fallback to local storage
+            if (!this.firstCloudLoad) {
+                const localData = localStorage.getItem(STORAGE_KEY);
+                alert("Could not connect to Cloud Database. Loading offline data instead.\n\nError: " + error.message);
+                callback(localData ? JSON.parse(localData) : defaultState, false);
+                this.firstCloudLoad = true;
             }
         });
     }
