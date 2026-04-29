@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR ENTERPRISE - Business Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                </div>
+                <h2>RR ENTERPRISE</h2>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="dashboard">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-target="billing">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Billing</span>
+                </button>
+                <button class="nav-item" data-target="sales">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>Sales History</span>
+                </button>
+                <button class="nav-item" data-target="pending">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Pending Dues</span>
+                </button>
+                <button class="nav-item" data-target="inventory">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Inventory</span>
+                </button>
+                <button class="nav-item" data-target="customers">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customers</span>
+                </button>
+
+                <button class="nav-item" data-target="loans">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Loans & Expenses</span>
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="action-btn outline" onclick="app.exportData()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Backup Data
+                </button>
+                <p class="version">Version 1.0 (Offline)</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="topbar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="topbar-actions">
+                    <div class="date-display" id="current-date"></div>
+                </div>
+            </header>
+
+            <div class="view-container">
+                <!-- Dashboard View -->
+                <section id="dashboard" class="view active">
+                    <div class="stats-grid">
+                        <div class="stat-card primary">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Today's Sales</h3>
+                                <h2 id="dash-today-sales">₹0</h2>
+                            </div>
+                        </div>
+                        <div class="stat-card warning">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                                    </path>
+                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Pending Dues</h3>
+                                <h2 id="dash-pending-dues">₹0</h2>
+                            </div>
+                        </div>
+                        <div class="stat-card success">
+                            <div class="stat-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                                    <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Cash Collected</h3>
+                                <h2 id="dash-cash-collected">₹0</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-widgets">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Low Stock Alerts</h3>
+                                <span class="badge" id="dash-alert-count">0</span>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="alert-list" id="dash-stock-alerts">
+                                    <!-- Alerts populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Upcoming Loan EMIs</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="alert-list" id="dash-emi-alerts">
+                                    <!-- EMIs populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Billing View -->
+                <section id="billing" class="view">
+                    <div class="billing-container">
+                        <div class="billing-form">
+                            <div class="card">
+                                <h2>New Bill</h2>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Customer</label>
+                                        <div style="display: flex; gap: 10px;">
+                                            <select id="bill-customer" style="flex: 1;">
+                                                <option value="">Select or Create New...</option>
+                                            </select>
+                                            <button class="action-btn icon-only" onclick="app.showCustomerModal()">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Add Item</label>
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="bill-item-select" style="flex: 2;">
+                                            <option value="">Search Inventory...</option>
+                                        </select>
+                                        <input type="number" id="bill-item-qty" placeholder="Qty" min="1" value="1"
+                                            style="flex: 1;">
+                                        <button class="action-btn" onclick="app.addBillItem()">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="billing-summary">
+                            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                                <button class="action-btn primary full-width" id="btn-complete-bill"
+                                    onclick="app.generateBill()">Complete
+                                    Bill</button>
+                                <button class="action-btn outline" style="width: auto;" onclick="app.printBill()">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                        <path
+                                            d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                        </path>
+                                        <rect x="6" y="14" width="12" height="8"></rect>
+                                    </svg>
+                                    Print
+                                </button>
+                            </div>
+
+                            <div class="paper-invoice" id="printable-invoice">
+                                <div class="invoice-border">
+                                    <div class="inv-header-row">
+                                        <div class="inv-no">No. <span id="inv-no-val"></span></div>
+                                        <div class="inv-type-box">
+                                            <div class="inv-type-title">BILL OF SUPPLY</div>
+                                            <div class="inv-type-sub">CASH / CREDIT</div>
+                                        </div>
+                                        <div class="inv-spacer"></div>
+                                    </div>
+
+                                    <div class="inv-comp-text">Composition Taxable Person Not Eligible To Collect Tax on
+                                        Supply</div>
+
+                                    <div class="inv-brand">R.R. ENTERPRISES</div>
+                                    <div class="inv-dealers">Dealers in : ASIAN PAINTS & HARDWARE, Electrical, Order
+                                        Suppliers</div>
+                                    <div class="inv-address">Gangana Nagar, Kancharapalem, VISAKHAPATNAM-530 008. A.P.
+                                    </div>
+
+                                    <div class="inv-gst-date">
+                                        <div class="inv-gst">GSTIN : 37AIBPA4815C1ZX</div>
+                                        <div class="inv-date">Date : <span id="inv-date-val"></span></div>
+                                    </div>
+
+                                    <div class="inv-customer">
+                                        <div class="inv-row">
+                                            To M/s. Sri <span class="inv-fill" id="inv-cust-name"></span>
+                                        </div>
+                                        <div class="inv-row-split">
+                                            <div style="flex: 2">Place : <span class="inv-fill"
+                                                    id="inv-cust-place"></span></div>
+                                            <div style="flex: 1">GSTIN <span class="inv-fill" id="inv-cust-gst"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <table class="inv-table">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" class="col-sno">S.<br>No.</th>
+                                                <th rowspan="2" class="col-desc">Description</th>
+                                                <th rowspan="2" class="col-qty">Qty.</th>
+                                                <th rowspan="2" class="col-rate">Rate</th>
+                                                <th colspan="2" class="col-amount">AMOUNT</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="col-rs">Rs.</th>
+                                                <th class="col-ps">Ps.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="inv-items-body">
+                                            <!-- Items go here -->
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="4" class="inv-total-label">TOTAL</td>
+                                                <td class="col-rs" id="inv-tot-rs">0</td>
+                                                <td class="col-ps" id="inv-tot-ps">00</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <div class="inv-footer">
+                                        <div class="inv-words">Amount in words Rupees <span id="inv-words-val"
+                                                class="inv-fill"></span></div>
+                                        <div class="inv-footer-bottom">
+                                            <div class="inv-terms">Goods once sold cannot be taken back<br>or Exchanged
+                                            </div>
+                                            <div class="inv-sign">
+                                                <div>For <strong>R.R. ENTERPRISES</strong></div>
+                                                <div class="inv-sign-space">Authorised Signatory</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-section" style="margin-top: 15px;">
+                                <h4>Payment Details & Settings</h4>
+                                <div class="form-group">
+                                    <label>Apply GST (%) - Note: Composition scheme typically doesn't collect tax, but
+                                        if needed:</label>
+                                    <input type="number" id="bill-gst-rate" value="0" min="0" max="28"
+                                        style="width: 100px;" onchange="app.calculateBillTotals()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Payment Method</label>
+                                    <div class="radio-group">
+                                        <label><input type="radio" name="pay-method" value="Cash" checked> Cash</label>
+                                        <label><input type="radio" name="pay-method" value="UPI"> UPI</label>
+                                        <label><input type="radio" name="pay-method" value="Credit"> Credit
+                                            (Pending)</label>
+                                    </div>
+                                </div>
+                                <div class="form-group" id="amount-paid-group">
+                                    <label>Amount Paid Now</label>
+                                    <input type="number" id="bill-amount-paid" min="0" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sales History View -->
+                <section id="sales" class="view">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Sales History</h2>
+                            <div class="filters" style="display:flex; gap:10px;">
+                                <input type="month" id="sales-month-filter" onchange="app.renderSales()">
+                                <input type="text" id="sales-search" placeholder="Search customer..."
+                                    onkeyup="app.renderSales()">
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="sales-table" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Bill #</th>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pending Payments View -->
+                <section id="pending" class="view">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Pending Dues</h2>
+                        </div>
+                        <div class="table-container">
+                            <table id="pending-table" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>Bill #</th>
+                                        <th>Date</th>
+                                        <th>Due Amount</th>
+                                        <th>Overdue By</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inventory View -->
+                <section id="inventory" class="view">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Inventory Management</h2>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <input type="file" id="csv-upload" accept=".csv" style="display: none;" onchange="app.importInventoryCSV(event)">
+                                <button class="action-btn outline" onclick="document.getElementById('csv-upload').click()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                    Import CSV
+                                </button>
+                                <button class="action-btn outline" onclick="app.exportInventoryCSV()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    Export CSV
+                                </button>
+                                <button class="action-btn primary" onclick="app.showInventoryModal()">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Add Item
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table id="inventory-table" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Stock</th>
+                                        <th>Buy Price</th>
+                                        <th>Sell Price</th>
+                                        <th>Margin</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Customers View -->
+                <section id="customers" class="view">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Customers</h2>
+                            <button class="action-btn primary" onclick="app.showCustomerModal()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                                Add Customer
+                            </button>
+                        </div>
+                        <div class="table-container">
+                            <table id="customers-table" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Total Purchased</th>
+                                        <th>Pending Dues</th>
+                                        <th>Last Purchase</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Loans & Expenses View -->
+                <section id="loans" class="view">
+                    <div class="loans-layout">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Expenses</h2>
+                                <button class="action-btn primary" onclick="app.showExpenseModal()">Add Expense</button>
+                            </div>
+                            <div class="table-container">
+                                <table id="expenses-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Loans & EMIs</h2>
+                                <button class="action-btn primary" onclick="app.showLoanModal()">Add Loan</button>
+                            </div>
+                            <div class="table-container">
+                                <table id="loans-table" class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Provider</th>
+                                            <th>EMI Amount</th>
+                                            <th>Due Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Dynamic Modal Container -->
+    <div id="modal-container" class="modal">
+        <!-- Content injected by JS -->
+    </div>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+
+</html>
